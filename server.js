@@ -34,6 +34,10 @@ stream.on('tweet', tweet => {
   }
 })
 
+app.get('/status', (req, res) => {
+  res.send({ status: 'OK' })
+})
+
 const port = process.env.PORT || 3000
 app.listen(port, () => {
   console.log('Watching Trump on port', port)
