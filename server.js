@@ -22,7 +22,7 @@ const stream = t.stream('statuses/filter', { follow: ['1360915363', '25073877'] 
 stream.on('tweet', tweet => {
 
   const URL = `https://twitter.com/realDonaldTrump/status/${tweet.id_str}`
-  const stream = screenshot(URL, '1024x768', { delay: 3 })
+  const picture = screenshot(URL, '1024x768', { delay: 3 })
   const upload = s3Stream.upload({
     "Bucket": "watch-trump",
     "Key": `${tweet.id_str}.png`
@@ -36,7 +36,7 @@ stream.on('tweet', tweet => {
     console.log('error uploading', error)
   })
 
-  stream.pipe(upload)
+  picture.pipe(upload)
 })
 
 app.get('/status', (req, res) => {
