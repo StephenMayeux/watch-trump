@@ -10,9 +10,10 @@
   "author": "Stephen Mayeux",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.99.0",
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
-    "s3-stream-upload": "^2.0.2",
+    "s3-upload-stream": "^1.0.7",
     "screenshot-stream": "^4.2.0",
     "twit": "^2.2.9"
   }

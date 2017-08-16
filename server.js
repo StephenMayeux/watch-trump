@@ -7,6 +7,11 @@ const app = express()
 const Twit = require('twit')
 const fs = require('fs')
 const screenshot = require('screenshot-stream')
+const AWS = require('aws-sdk')
+const zlib = require('zlib')
+const s3Stream = require('s3-upload-stream')(new AWS.S3())
+
+const compress = zlib.createGzip()
 
 const t = new Twit({
   consumer_key: process.env.CONSUMER_KEY,
@@ -22,7 +27,11 @@ stream.on('tweet', tweet => {
   if (user.id_str === '1360915363') {
     const URL = `https://twitter.com/eslHipHop/status/${tweet.id_str}`
     const stream = screenshot(URL, '1024x768')
-    stream.pipe(fs.createWriteStream(`${tweet.id_str}.png`))
+    const upload = s3Stream.upload({
+      "Bucket": "watch-trump",
+      "Key": `${tweet.id_str}.png`
+    })
+    stream.pipe(upload)
   }
 })
 
