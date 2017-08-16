@@ -7,6 +7,10 @@
     "start-dev": "NODE_ENV=development nodemon server.js",
     "start": "node server.js"
   },
+  "engines": {
+    "node": "7.3.0",
+    "npm": "3.10.10"
+  },
   "author": "Stephen Mayeux",
   "license": "ISC",
   "dependencies": {

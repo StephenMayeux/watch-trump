@@ -20,12 +20,12 @@ const t = new Twit({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 })
 
-const stream = t.stream('user', 'eslHipHop')
+const stream = t.stream('user', 'realDonaldTrump')
 
 stream.on('tweet', tweet => {
   const { user } = tweet
-  if (user.id_str === '1360915363') {
-    const URL = `https://twitter.com/eslHipHop/status/${tweet.id_str}`
+  if (user.id_str === '25073877') {
+    const URL = `https://twitter.com/realDonaldTrump/status/${tweet.id_str}`
     const stream = screenshot(URL, '1024x768')
     const upload = s3Stream.upload({
       "Bucket": "watch-trump",
