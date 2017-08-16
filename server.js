@@ -17,12 +17,10 @@ const t = new Twit({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 })
 
-const stream = t.stream('user', 'realDonaldTrump')
+const stream = t.stream('statuses/filter', { follow: ['1360915363', '25073877'] })
 
 stream.on('tweet', tweet => {
-  console.log('Tweet activity has happened', { user: tweet.user.id_str })
 
-  const { user } = tweet
   const URL = `https://twitter.com/realDonaldTrump/status/${tweet.id_str}`
   const stream = screenshot(URL, '1024x768', { delay: 3 })
   const upload = s3Stream.upload({
@@ -39,7 +37,6 @@ stream.on('tweet', tweet => {
   })
 
   stream.pipe(upload)
-
 })
 
 app.get('/status', (req, res) => {
