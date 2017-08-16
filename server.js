@@ -20,7 +20,7 @@ const t = new Twit({
 const stream = t.stream('user', 'realDonaldTrump')
 
 stream.on('tweet', tweet => {
-  console.log('Tweet activity has happened', { tweet.user.id_str })
+  console.log('Tweet activity has happened', { user: tweet.user.id_str })
 
   const { user } = tweet
   if (user.id_str === '25073877') {
