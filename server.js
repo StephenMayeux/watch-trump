@@ -10,8 +10,6 @@ const screenshot = require('screenshot-stream')
 const AWS = require('aws-sdk')
 const s3Stream = require('s3-upload-stream')(new AWS.S3())
 
-const compress = zlib.createGzip()
-
 const t = new Twit({
   consumer_key: process.env.CONSUMER_KEY,
   consumer_secret: process.env.CONSUMER_SECRET,
