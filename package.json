@@ -4,11 +4,13 @@
   "description": "Hold Trump accountable by taking screenshots of all his tweets",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start-dev": "NODE_ENV=development nodemon server.js",
+    "start": "node server.js"
   },
   "author": "Stephen Mayeux",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "s3-stream-upload": "^2.0.2",
     "screenshot-stream": "^4.2.0",
