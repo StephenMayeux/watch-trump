@@ -8,7 +8,6 @@ const Twit = require('twit')
 const fs = require('fs')
 const screenshot = require('screenshot-stream')
 const AWS = require('aws-sdk')
-const zlib = require('zlib')
 const s3Stream = require('s3-upload-stream')(new AWS.S3())
 
 const compress = zlib.createGzip()
