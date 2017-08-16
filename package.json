@@ -1,0 +1,17 @@
+{
+  "name": "hold-trump-accountable",
+  "version": "1.0.0",
+  "description": "Hold Trump accountable by taking screenshots of all his tweets",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Stephen Mayeux",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "s3-stream-upload": "^2.0.2",
+    "screenshot-stream": "^4.2.0",
+    "twit": "^2.2.9"
+  }
+}
