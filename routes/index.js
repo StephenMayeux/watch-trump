@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
   const { page } = req.query
   const pageNumber = page ? page : '1'
 
-  Tweet.find({}, { sort: { createdAt: -1 } }).paginate({ page }, (err, tweets) => {
+  Tweet.find({}, {}, { sort: { createdAt: -1 } }).paginate({ page }, (err, tweets) => {
     if (err) {
       res.render('error', { msg: 'Error fetching data. Please try again later.' })
     }
