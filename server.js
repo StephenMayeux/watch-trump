@@ -9,6 +9,9 @@ const fs = require('fs')
 const screenshot = require('screenshot-stream')
 const AWS = require('aws-sdk')
 const s3Stream = require('s3-upload-stream')(new AWS.S3())
+const mongoose = require('mongoose')
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/watch-trump')
 
 const t = new Twit({
   consumer_key: process.env.CONSUMER_KEY,
