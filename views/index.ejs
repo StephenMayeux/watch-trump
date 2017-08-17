@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    !-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="The Watch Trump Blog preserves Trump's tweets before he deletes them.">
+    <meta name="author" content="Stephen Mayeux, ESL Teacher Turned Full Stack Developer">
+
+    <title>The Watch Trump Blog</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/blog.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title">The Watch Trump Blog</h1>
+        <p class="lead blog-description">It's too late for 45 to delete that tweet</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+          <% for (var i = 0; i < tweets.length; i++) { %>
+            <div class="blog-post">
+              <h2 class="blog-post-title"><%= tweets[i].split(' ').slice(0, 3).join(' ') + '...' %></h2>
+              <p class="blog-post-meta"><%= tweets[i].date %></p>
+
+              <p><%= tweets[i].text %></p>
+              <hr>
+              <a href="<%= 'https://twitter.com/realDonaldTrump/status/' + tweets[i].tweetId %>" target="_blank">
+                <img src="<%= tweets[i].image %>" class="img-responsive">
+              </a>
+            </div><!-- /.blog-post -->
+          <% } %>
+
+          <!-- pagination here -->
+          <%= paginationHTML %>
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+            <p>The Watch Trump Blog takes a screenshot every time President Donald Trump sends out a tweet. It was written by Stephen Mayeux, a software developer in Austin, TX.</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Get In Touch</h4>
+            <ol class="list-unstyled">
+              <li><a href="https://github.com/StephenMayeux" target="_blank">GitHub</a></li>
+              <li><a href="https://twitter.com/eslHipHop" target="_blank">Twitter</a></li>
+              <li><a href="https://www.thebestjs.com" target="_blank">Learn To Code</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>We must not confuse dissent with disloyalty. When the loyal opposition dies, I think the soul of America dies with it.</p>
+      <p><em>&mdash; Edward R. Murrow</em></p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

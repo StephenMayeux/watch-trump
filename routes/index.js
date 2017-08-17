@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
   Tweet.find({}).paginate({ page }, (err, tweets) => {
     if (err) {
-      res.render('error', { msg: 'Whoops! Error fetching data. Please try again later.' })
+      res.render('error', { msg: 'Error fetching data. Please try again later.' })
     }
     else {
       const pagination = paginate.page(tweets.length, 5, pageNumber)

@@ -1,7 +1,7 @@
 if (process.env.NODE_ENV === 'development') {
   require('dotenv').config()
 }
-
+const path = require('path')
 const express = require('express')
 const app = express()
 const Twit = require('twit')
@@ -13,7 +13,7 @@ const mongoose = require('mongoose')
 
 const Tweet = require('./models/Tweet')
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/watch-trump')
+mongoose.connect(process.env.MONGODB_URI)
 
 const t = new Twit({
   consumer_key: process.env.CONSUMER_KEY,
@@ -44,7 +44,8 @@ stream.on('tweet', tweet => {
 
       const saveNewTweet = new Tweet({
         text: tweet.text,
-        image: Location
+        image: Location,
+        tweetId: tweet.id_str
       })
 
       saveNewTweet.save(err => {
@@ -65,6 +66,9 @@ stream.on('tweet', tweet => {
   }
 })
 
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, 'views'))
+app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', require('./routes'))
 
 const port = process.env.PORT || 3000
