@@ -65,9 +65,7 @@ stream.on('tweet', tweet => {
   }
 })
 
-app.get('/status', (req, res) => {
-  res.send({ status: 'OK' })
-})
+app.use('/', require('./routes'))
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {
