@@ -9,7 +9,7 @@ const TweetSchema = new Schema({
 }, { timestamps: true })
 
 TweetSchema.virtual('date').get(() => {
-  return moment(this.createdAt).format('dddd, MMM Mo, YYYY')
+  return moment(this.createdAt).format('dddd, MMM Do, YYYY')
 })
 
 const ModelClass = mongoose.model('tweet', TweetSchema)
