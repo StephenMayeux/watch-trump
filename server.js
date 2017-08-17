@@ -11,6 +11,8 @@ const AWS = require('aws-sdk')
 const s3Stream = require('s3-upload-stream')(new AWS.S3())
 const mongoose = require('mongoose')
 
+const Tweet = require('./models/Tweet')
+
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/watch-trump')
 
 const t = new Twit({
@@ -37,8 +39,22 @@ stream.on('tweet', tweet => {
       "Key": `${tweet.id_str}.png`
     })
 
-    upload.on('uploaded', fileMeta => {
-      console.log('image successfully uploaded', fileMeta)
+    upload.on('uploaded', ({ Location }) => {
+      console.log('image successfully uploaded')
+
+      const saveNewTweet = new Tweet({
+        text: tweet.text,
+        image: Location
+      })
+
+      saveNewTweet.save(err => {
+        if (err) {
+          console.log('Error saving tweet to database', err)
+        }
+        else {
+          console.log('Success saving tweet to database')
+        }
+      })
     })
 
     upload.on('error', error => {

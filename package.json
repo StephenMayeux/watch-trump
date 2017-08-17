@@ -18,6 +18,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "mongoose": "^4.11.7",
+    "paginate": "^0.2.0",
     "s3-upload-stream": "^1.0.7",
     "screenshot-stream": "^4.2.0",
     "twit": "^2.2.9"
