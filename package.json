@@ -19,7 +19,7 @@
     "ejs": "^2.5.7",
     "express": "^4.15.4",
     "moment": "^2.18.1",
-    "mongoose": "^4.11.7",
+    "mongoose": "^5.7.5",
     "paginate": "^0.2.0",
     "s3-upload-stream": "^1.0.7",
     "screenshot-stream": "^4.2.0",
