@@ -18,7 +18,7 @@
     "dotenv": "^4.0.0",
     "ejs": "^2.5.7",
     "express": "^4.15.4",
-    "moment": "^2.18.1",
+    "moment": "^2.29.4",
     "mongoose": "^4.11.7",
     "paginate": "^0.2.0",
     "s3-upload-stream": "^1.0.7",
